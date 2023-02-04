@@ -10,6 +10,7 @@ function App() {
     <div className="App">
         <NavBar/>
         <Routes>
+            <Route path={'*'} element={<h1>Page not Found</h1>}/>
             <Route path={'/'} element={<MainPage/>}/>
             <Route path={'/news/:id'} element={<NewsPage/>}/>
             <Route path={'/news/add'} element={<NewsForm/>}/>
