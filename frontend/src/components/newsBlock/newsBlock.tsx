@@ -37,7 +37,7 @@ const NewsBlock:React.FC<Props>= ({props}) => {
                         <Typography variant="body2" color="text.secondary">
                             <b>created at:</b> <br/> {date}
                         </Typography>
-                        <Link to={'/news/' + props.id}>Learn more. . .</Link>
+                        <Link to={'/news/' + props.id}>Watch more. . .</Link>
                         <Button onClick={onDelete}> Delete</Button>
                     </CardContent>
                 </Card>
