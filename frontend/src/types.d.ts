@@ -6,6 +6,8 @@ export interface news {
 	createdAt: string;
 }
 
+export type newsWithOutId = Omit<news, 'id'>
+
 export interface comments {
 	id: string;
 	news_id: string;
@@ -13,3 +15,4 @@ export interface comments {
 	text: string
 }
 
+export type commentsWithOutID = Omit<comments, 'id'>
