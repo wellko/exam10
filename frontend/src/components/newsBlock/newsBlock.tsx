@@ -1,6 +1,6 @@
 import React from 'react';
 import {news} from "../../types";
-import {Box, Button, Card, CardContent, CardMedia, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import {apiUrl} from "../../constants";
 import dayjs from "dayjs";
 import {Link} from "react-router-dom";
@@ -23,14 +23,16 @@ const NewsBlock:React.FC<Props>= ({props}) => {
 
     const date = dayjs(props.createdAt).format('YYYY-MM-DD HH:mm:ss')
     return (
-            <Box>
+            <Box marginTop={4}>
                 <Card>
+                    <Box maxWidth='40%'>
                     {props.image ? <CardMedia
                         component="img"
                         image={ImageUrl}
                         title={props.image}
-                    />: null}
+                    />: null}</Box>
                     <CardContent>
+                        <Grid container>
                         <Typography gutterBottom variant="h5" component="div">
                             <br/> <b>{props.title}</b>
                         </Typography>
@@ -39,6 +41,7 @@ const NewsBlock:React.FC<Props>= ({props}) => {
                         </Typography>
                         <Link to={'/news/' + props.id}>Watch more. . .</Link>
                         <Button onClick={onDelete}> Delete</Button>
+                        </Grid>
                     </CardContent>
                 </Card>
             </Box>

@@ -22,7 +22,11 @@ const MainPage = () => {
 
     return (
         <Container>
-            <Link to={'/news/add'}>Create new news</Link>
+            <Link style={{
+                padding : '5px 20px',
+                background : '#FFF',
+                borderRadius : '5px',
+            }} to={'/news/add'} >Create new news</Link>
             {getting? <CircularProgress/>: News.map(el => {
                 return <NewsBlock key={Math.random()} props={el}/>
             })}

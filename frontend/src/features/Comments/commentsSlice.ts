@@ -58,4 +58,7 @@ export const commentsSlice = createSlice(
 )
 
 export const commentsReducer = commentsSlice.reducer;
-export const selectCommentsAction = (state: RootState) => state.comments.posting;
+export const selectCommentsState = (state: RootState) => state.comments.comments;
+export const selectCommentsPosting = (state: RootState) => state.comments.posting;
+export const selectCommentsGetting = (state: RootState) => state.comments.getting;
+export const selectCommentsDeleting = (state: RootState) => state.comments.deleting;
