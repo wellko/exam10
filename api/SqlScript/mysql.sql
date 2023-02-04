@@ -19,7 +19,7 @@ create table if not exists news_data.comments
     news_id int         not null,
     author  varchar(50) null,
     text    text        not null,
-    constraint coments_news_id_fk
+    constraint comments_news_id_fk
     foreign key (news_id) references news_data.news (id)
     on update cascade on delete cascade
     );

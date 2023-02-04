@@ -1,6 +1,8 @@
 import express from "express";
 import mysqlDb from "../mysqlDb";
-import {news} from "../types";
+import {newsWithOutId, news} from "../types";
+import {ResultSetHeader} from "mysql2/index";
+import {imagesUpload} from "../multer";
 
 const newsRouter = express.Router();
 
@@ -21,6 +23,35 @@ newsRouter.get('/:id', async (req, res) => {
     } else {
         res.send(response[0]);
     }
+});
+
+newsRouter.delete('/:id', async (req, res) => {
+    const connection = mysqlDb.getConnection();
+    const result = await connection.query('DELETE FROM news WHERE id = ?', [req.params.id]);
+    const resultResponse = result[0] as ResultSetHeader;
+    if (resultResponse.affectedRows > 0) {
+        res.send('news was deleted')
+    } else {
+        res.send('cant find news with this id')
+    }
+})
+
+newsRouter.post('/',imagesUpload.single('image'), async (req, res) => {
+    const connection = mysqlDb.getConnection();
+    if (!req.body.text || !req.body.title) {
+        return res.status(400).send({error: 'all fields required'});
+    }
+    const postData: newsWithOutId = {
+        text: req.body.text,
+        title: req.body.title,
+        createdAt: new Date().toISOString(),
+        image: req.file?  req.file.filename : null,
+    }
+    const result = await connection.query(
+        'INSERT INTO news (text, title, createdAt, image) VALUES (?, ?, ?, ?)',
+        [postData.text, postData.title, postData.createdAt, postData.image])
+    const responseInfo = result[0] as ResultSetHeader;
+    res.send({...postData, id: responseInfo.insertId})
 })
 
 export default newsRouter;
