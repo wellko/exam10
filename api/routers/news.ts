@@ -44,7 +44,7 @@ newsRouter.post('/',imagesUpload.single('image'), async (req, res) => {
     const postData: newsWithOutId = {
         text: req.body.text,
         title: req.body.title,
-        createdAt: new Date().toISOString(),
+        createdAt: new Date(),
         image: req.file?  req.file.filename : null,
     }
     const result = await connection.query(

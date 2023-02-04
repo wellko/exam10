@@ -8,6 +8,8 @@ export interface news {
 
 export type newsWithOutId = Omit<news, 'id'>
 
+export type newsPostData = Omit<newsWithOutId, 'createdAt'>
+
 export interface comments {
 	id: string;
 	news_id: string;
