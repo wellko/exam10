@@ -1,6 +1,6 @@
 import express from "express";
 import mysqlDb from "../mysqlDb";
-import {newsWithOutId, news} from "../types";
+import {newsWithOutId, news, newsWithOutText} from "../types";
 import {ResultSetHeader} from "mysql2/index";
 import {imagesUpload} from "../multer";
 
@@ -10,7 +10,16 @@ newsRouter.get('/', async (req, res) => {
     const connection = mysqlDb.getConnection();
     const newsData = await connection.query('SELECT * FROM news');
     const response = newsData[0] as news[];
-    res.send(response);
+    let responseData: newsWithOutText[]= [];
+    if (response.length > 0){
+        response.map(el => responseData.push({
+            title: el.title,
+            createdAt: el.createdAt,
+            id: el.id,
+            image: el.image
+        }))
+    }
+    res.send(responseData);
 });
 
 newsRouter.get('/:id', async (req, res) => {

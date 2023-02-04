@@ -22,6 +22,7 @@ const CommentsBlock: React.FC<Props> = ({props, id, deleting}) => {
     return (
         <Box>
             <Card sx={{
+                marginTop: '10px',
                 bgcolor: '#B1D4E0',
                 borderRadius: '30px',
                 border: '2px',

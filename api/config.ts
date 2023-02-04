@@ -7,7 +7,7 @@ const config = {
 	db: {
 			host:'localhost',
 			user: 'root',
-			password: 'root',
+			password: '1qaz@WSX29',
 			database: 'news_data'
 	}
 };

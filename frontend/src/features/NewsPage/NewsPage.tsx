@@ -35,7 +35,7 @@ const NewsPage = () => {
             { loading? <CircularProgress/>
                 : Info? <Box>
                     <Typography variant='h1'>{Info.title}</Typography>
-                    <Typography color='#c5c5c5'>Created at: {dayjs(Info.createdAt).format('YYYY-MM-DD HH:mm:ss')}</Typography>
+                    <Typography color='text.secondary'>Created at: {dayjs(Info.createdAt).format('YYYY-MM-DD HH:mm:ss')}</Typography>
                     <Typography marginTop={3}>{Info.text}</Typography>
                 </Box> : <h1>Cant find Page</h1>
             }
