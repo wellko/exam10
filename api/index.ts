@@ -1,12 +1,14 @@
 import express = require("express");
 import cors = require("cors");
 import mysqlDb from "./mysqlDb";
+import newsRouter from "./routers/news";
 
 const app = express();
 const port = 8000;
 
 app.use(express.json());
 app.use(cors());
+app.use('/news', newsRouter);
 app.use(express.static('public'));
 
 const run = async () => {

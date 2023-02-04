@@ -8,7 +8,7 @@ const config = {
 			host:'localhost',
 			user: 'root',
 			password: 'root',
-			database: ''
+			database: 'news_data'
 	}
 };
 
