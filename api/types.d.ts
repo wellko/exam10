@@ -5,3 +5,10 @@ export interface news {
 	image: string | null;
 	createdAt: string;
 }
+
+export interface comments {
+	id: string;
+	news_id: string;
+	author: string;
+	text: string
+}

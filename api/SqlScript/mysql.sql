@@ -12,7 +12,7 @@ create table if not exists news_data.news
     createdAt datetime     null
     );
 
-create table if not exists news_data.coments
+create table if not exists news_data.comments
 (
     id      int auto_increment
     primary key,
@@ -26,4 +26,4 @@ create table if not exists news_data.coments
 
 INSERT INTO news_data.news (id, title, text, image, createdAt) VALUES (1, 'hey', 'test', null, CURRENT_DATE);
 
-INSERT INTO news_data.coments (id, news_id, author, text) VALUES (1, 1, 'das', 'dsgfdadas');
+INSERT INTO news_data.comments (id, news_id, author, text) VALUES (1, 1, 'das', 'dsgfdadas');
